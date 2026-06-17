@@ -1,0 +1,6 @@
+[submodule "include/ElaWidgetTools"]
+	path = include/ElaWidgetTools
+	url = https://github.com/Liniyous/ElaWidgetTools.git
+[submodule "include/plog"]
+	path = include/plog
+	url = https://github.com/SergiusTheBest/plog

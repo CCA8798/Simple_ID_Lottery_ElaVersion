@@ -1,0 +1,28 @@
+# Build
+out/
+build/
+cmake-build-*/
+
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj*
+*.user
+*.suo
+
+# Qt Creator
+*.pro.user*
+*.autosave
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+.DS_Store

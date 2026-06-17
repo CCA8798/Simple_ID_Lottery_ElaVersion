@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Simple ID Lottery(GUI Version)</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="mw_resource.qrc">
+    <normaloff>:/resources/app.ico</normaloff>:/resources/app.ico</iconset>
+  </property>
+ </widget>
+ <resources>
+  <include location="mw_resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
