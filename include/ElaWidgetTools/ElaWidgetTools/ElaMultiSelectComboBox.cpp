@@ -28,7 +28,7 @@ ElaMultiSelectComboBox::ElaMultiSelectComboBox(QWidget* parent)
     d->_comboBoxStyle = new ElaComboBoxStyle(style());
     setStyle(d->_comboBoxStyle);
 
-    //调用view 让container初始化
+    //调用view 让container初始�?
     d->_comboView = new ElaComboBoxView(this);
     setView(d->_comboView);
     QAbstractItemView* comboBoxView = this->view();
@@ -177,7 +177,7 @@ void ElaMultiSelectComboBox::paintEvent(QPaintEvent* e)
     QRect foregroundRect = rect();
     foregroundRect.adjust(6, 1, -6, -1);
     painter.drawRoundedRect(foregroundRect, d->_pBorderRadius, d->_pBorderRadius);
-    // 底边线绘制
+    // 底边线绘�?
     painter.setPen(ElaThemeColor(d->_themeMode, BasicBaseLine));
     painter.drawLine(foregroundRect.x() + d->_pBorderRadius, foregroundRect.y() + foregroundRect.height(), foregroundRect.x() + foregroundRect.width() - d->_pBorderRadius, foregroundRect.y() + foregroundRect.height());
 
@@ -185,7 +185,7 @@ void ElaMultiSelectComboBox::paintEvent(QPaintEvent* e)
     painter.setPen(isEnabled() ? ElaThemeColor(d->_themeMode, BasicText) : ElaThemeColor(d->_themeMode, BasicTextDisable));
     QString currentText = painter.fontMetrics().elidedText(d->_currentText, Qt::ElideRight, foregroundRect.width() - 27 - width() * 0.05);
     painter.drawText(15, height() / 2 + painter.fontMetrics().ascent() / 2 - 1, currentText);
-    //展开指示器绘制
+    //展开指示器绘�?
     painter.setPen(Qt::NoPen);
     painter.setBrush(d->_themeMode == ElaThemeType::Light ? QColor(0x0E, 0x6F, 0xC3) : QColor(0x4C, 0xA0, 0xE0));
     painter.drawRoundedRect(QRectF(width() / 2 - d->_pExpandMarkWidth, height() - 3, d->_pExpandMarkWidth * 2, 3), 2, 2);
@@ -200,7 +200,7 @@ void ElaMultiSelectComboBox::paintEvent(QPaintEvent* e)
         painter.translate(expandIconRect.x() + (qreal)expandIconRect.width() / 2 - 2, expandIconRect.y() + (qreal)expandIconRect.height() / 2);
         painter.rotate(d->_pExpandIconRotate);
         painter.translate(-expandIconRect.x() - (qreal)expandIconRect.width() / 2 + 2, -expandIconRect.y() - (qreal)expandIconRect.height() / 2);
-        painter.drawText(expandIconRect, Qt::AlignVCenter, QChar(ElaIconType::AngleDown));
+        painter.drawText(expandIconRect, Qt::AlignVCenter, QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
         painter.restore();
     }
 }
@@ -256,7 +256,7 @@ void ElaMultiSelectComboBox::showPopup()
             viewPosAnimation->setDuration(400);
             viewPosAnimation->start(QAbstractAnimation::DeleteWhenStopped);
         }
-        //指示器动画
+        //指示器动�?
         QPropertyAnimation* rotateAnimation = new QPropertyAnimation(d, "pExpandIconRotate");
         connect(rotateAnimation, &QPropertyAnimation::valueChanged, this, [=](const QVariant& value) {
             update();
@@ -329,7 +329,7 @@ void ElaMultiSelectComboBox::hidePopup()
                 fixedSizeAnimation->start(QAbstractAnimation::DeleteWhenStopped);
                 d->_isAllowHidePopup = false;
             }
-            //指示器动画
+            //指示器动�?
             QPropertyAnimation* rotateAnimation = new QPropertyAnimation(d, "pExpandIconRotate");
             connect(rotateAnimation, &QPropertyAnimation::valueChanged, this, [=](const QVariant& value) {
                 update();

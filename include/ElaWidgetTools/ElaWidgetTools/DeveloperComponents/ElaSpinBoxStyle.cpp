@@ -93,7 +93,7 @@ void ElaSpinBoxStyle::drawComplexControl(ComplexControl control, const QStyleOpt
                 painter->drawRoundedRect(subLineRect, 4, 4);
             }
         }
-        //底边线
+        //底边�?
         painter->setPen(Qt::NoPen);
         painter->setBrush(ElaThemeColor(_themeMode, BasicHemline));
         QPainterPath path;
@@ -110,9 +110,9 @@ void ElaSpinBoxStyle::drawComplexControl(ComplexControl control, const QStyleOpt
         iconFont.setPixelSize(17);
         painter->setFont(iconFont);
         painter->setPen(isEnable ? ElaThemeColor(_themeMode, BasicText) : ElaThemeColor(_themeMode, BasicTextDisable));
-        painter->drawText(addLineRect, Qt::AlignCenter, _pButtonMode == ElaSpinBoxType::PMSide ? QChar(ElaIconType::Plus) : QChar(ElaIconType::AngleUp));
+        painter->drawText(addLineRect, Qt::AlignCenter, _pButtonMode == ElaSpinBoxType::PMSide ? QChar(static_cast<char16_t>(ElaIconType::Plus)) : QChar(static_cast<char16_t>(ElaIconType::AngleUp)));
         //减小图标
-        painter->drawText(subLineRect, Qt::AlignCenter, _pButtonMode == ElaSpinBoxType::PMSide ? QChar(ElaIconType::Minus) : QChar(ElaIconType::AngleDown));
+        painter->drawText(subLineRect, Qt::AlignCenter, _pButtonMode == ElaSpinBoxType::PMSide ? QChar(static_cast<char16_t>(ElaIconType::Minus)) : QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
         painter->restore();
         return;
     }

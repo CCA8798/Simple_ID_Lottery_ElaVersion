@@ -58,7 +58,7 @@ void ElaCalendarPicker::paintEvent(QPaintEvent* event)
     QPainter painter(this);
     painter.save();
     painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
-    // 边框和背景绘制
+    // 边框和背景绘�?
     QRect baseRect = rect();
     baseRect.adjust(1, 1, -1, -1);
     painter.setPen(ElaThemeColor(d->_themeMode, BasicBorder));
@@ -77,6 +77,6 @@ void ElaCalendarPicker::paintEvent(QPaintEvent* event)
     QFont iconFont = QFont("ElaAwesome");
     iconFont.setPixelSize(17);
     painter.setFont(iconFont);
-    painter.drawText(QRect(baseRect.right() - 25, 0, 15, height()), Qt::AlignVCenter | Qt::AlignRight, QChar(ElaIconType::CalendarRange));
+    painter.drawText(QRect(baseRect.right() - 25, 0, 15, height()), Qt::AlignVCenter | Qt::AlignRight, QChar(static_cast<char16_t>(ElaIconType::CalendarRange)));
     painter.restore();
 }

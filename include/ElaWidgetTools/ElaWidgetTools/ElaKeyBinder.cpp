@@ -21,7 +21,7 @@ ElaKeyBinder::ElaKeyBinder(QWidget* parent)
     textFont.setPixelSize(15);
     setFont(textFont);
     d->_binderContainer = new ElaKeyBinderContainer(this);
-    setText(u8"  按键: " + QString(u8"未绑定") + "      ");
+    setText(QString("  按键: ") + QString("未绑定") + QString("      "));
     d->_binderDialog = new ElaContentDialog(window());
     d->_binderDialog->setCentralWidget(d->_binderContainer);
     d->_binderDialog->setLeftButtonText(u8"取消");
@@ -118,7 +118,7 @@ void ElaKeyBinder::paintEvent(QPaintEvent* event)
     painter.setPen(ElaThemeColor(d->_themeMode, BasicText));
     QRect iconRect = rect();
     iconRect.adjust(0, 0, -10, 0);
-    painter.drawText(iconRect, Qt::AlignVCenter | Qt::AlignRight, QChar(ElaIconType::Pencil));
+    painter.drawText(iconRect, Qt::AlignVCenter | Qt::AlignRight, QChar(static_cast<char16_t>(ElaIconType::Pencil)));
     painter.restore();
     QLabel::paintEvent(event);
 }

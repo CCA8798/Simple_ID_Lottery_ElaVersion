@@ -26,7 +26,7 @@ void ElaTabBarStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt,
     {
     case QStyle::PE_FrameTabBarBase:
     {
-        //底边线
+        //底边�?
         return;
     }
     case QStyle::PE_IndicatorArrowLeft:
@@ -60,7 +60,7 @@ void ElaTabBarStyle::drawPrimitive(PrimitiveElement pe, const QStyleOption* opt,
         iconFont.setPixelSize(16);
         p->setFont(iconFont);
         p->setPen(ElaThemeColor(_themeMode, BasicText));
-        p->drawText(opt->rect, Qt::AlignCenter, QChar(ElaIconType::Xmark));
+        p->drawText(opt->rect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::Xmark)));
         p->restore();
         return;
     }
@@ -140,7 +140,7 @@ void ElaTabBarStyle::drawControl(ControlElement element, const QStyleOption* opt
     }
     case QStyle::CE_TabBarTabLabel:
     {
-        //文字和图标绘制
+        //文字和图标绘�?
         if (const QStyleOptionTab* topt = qstyleoption_cast<const QStyleOptionTab*>(option))
         {
             QRect textRect = subElementRect(QStyle::SE_TabBarTabText, topt, widget);

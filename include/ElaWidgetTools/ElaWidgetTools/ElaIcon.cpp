@@ -23,7 +23,7 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome)
     // painter.setBrush(QColor("#1570A5"));
     iconFont.setPixelSize(25);
     painter.setFont(iconFont);
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }
@@ -40,7 +40,7 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome, const QColor& iconColor
     // painter.setBrush(QColor("#1570A5"));
     iconFont.setPixelSize(25);
     painter.setFont(iconFont);
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }
@@ -55,8 +55,8 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome, int pixelSize)
     painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
     iconFont.setPixelSize(pixelSize);
     painter.setFont(iconFont);
-    // 画图形字体
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    // 画图形字�?
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }
@@ -72,8 +72,8 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome, int pixelSize, const QC
     painter.setPen(iconColor);
     iconFont.setPixelSize(pixelSize);
     painter.setFont(iconFont);
-    // 画图形字体
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    // 画图形字�?
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }
@@ -88,8 +88,8 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome, int pixelSize, int fixe
     painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
     iconFont.setPixelSize(pixelSize);
     painter.setFont(iconFont);
-    // 画图形字体
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    // 画图形字�?
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }
@@ -105,8 +105,8 @@ QIcon ElaIcon::getElaIcon(ElaIconType::IconName awesome, int pixelSize, int fixe
     painter.setPen(iconColor);
     iconFont.setPixelSize(pixelSize);
     painter.setFont(iconFont);
-    // 画图形字体
-    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(awesome));
+    // 画图形字�?
+    painter.drawText(pix.rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(awesome)));
     painter.end();
     return QIcon(pix);
 }

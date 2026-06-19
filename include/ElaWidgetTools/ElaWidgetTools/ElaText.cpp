@@ -69,6 +69,7 @@ int ElaText::getTextPixelSize() const
 
 void ElaText::setTextPointSize(int size)
 {
+    if (size <= 0) return;
     QFont font = this->font();
     font.setPointSize(size);
     setFont(font);
@@ -167,10 +168,14 @@ void ElaText::paintEvent(QPaintEvent* event)
         painter.save();
         painter.setRenderHints(QPainter::SmoothPixmapTransform | QPainter::Antialiasing | QPainter::TextAntialiasing);
         QFont iconFont = QFont("ElaAwesome");
-        iconFont.setPixelSize(this->font().pixelSize());
+        {
+            int ps = this->font().pixelSize();
+            if (ps <= 0) ps = 28;
+            iconFont.setPixelSize(ps);
+        }
         painter.setFont(iconFont);
         painter.setPen(ElaThemeColor(d->_themeMode, BasicText));
-        painter.drawText(rect(), Qt::AlignCenter, QChar(d->_pElaIcon));
+        painter.drawText(rect(), Qt::AlignCenter, QChar(static_cast<char16_t>(d->_pElaIcon)));
         painter.restore();
     }
     else

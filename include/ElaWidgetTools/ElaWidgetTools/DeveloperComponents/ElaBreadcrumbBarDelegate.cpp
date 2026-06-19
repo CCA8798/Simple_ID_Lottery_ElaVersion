@@ -33,7 +33,7 @@ void ElaBreadcrumbBarDelegate::paint(QPainter* painter, const QStyleOptionViewIt
         }
         else
         {
-            //不为最后一个 且没有被鼠标覆盖
+            //不为最后一�?且没有被鼠标覆盖
             if (!(option.state & QStyle::State_MouseOver))
             {
                 painter->setPen(ElaThemeColor(_themeMode, BasicTextNoFocus));
@@ -46,12 +46,12 @@ void ElaBreadcrumbBarDelegate::paint(QPainter* painter, const QStyleOptionViewIt
     }
     else
     {
-        //分隔符
+        //分隔�?
         QFont iconFont = QFont("ElaAwesome");
         iconFont.setPixelSize(painter->font().pixelSize() * 0.785);
         painter->setFont(iconFont);
         itemRect.setX(itemRect.x() - itemRect.width() * 0.36);
-        painter->drawText(itemRect, Qt::AlignCenter, QChar(ElaIconType::AngleRight));
+        painter->drawText(itemRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::AngleRight)));
     }
     painter->restore();
 }

@@ -40,7 +40,7 @@ void ElaTreeViewStyle::drawPrimitive(PrimitiveElement element, const QStyleOptio
             {
                 if (vopt->state & QStyle::State_MouseOver && isEnable)
                 {
-                    // 选中时覆盖
+                    // 选中时覆�?
                     painter->fillPath(path, ElaThemeColor(_themeMode, BasicSelectedHoverAlpha));
                 }
                 else
@@ -53,7 +53,7 @@ void ElaTreeViewStyle::drawPrimitive(PrimitiveElement element, const QStyleOptio
             {
                 if (vopt->state & QStyle::State_MouseOver && isEnable)
                 {
-                    // 覆盖时颜色
+                    // 覆盖时颜�?
                     painter->fillPath(path, ElaThemeColor(_themeMode, BasicHoverAlpha));
                 }
             }
@@ -76,7 +76,7 @@ void ElaTreeViewStyle::drawPrimitive(PrimitiveElement element, const QStyleOptio
                 iconFont.setPixelSize(17);
                 painter->setFont(iconFont);
                 painter->setPen(ElaThemeColor(_themeMode, BasicText));
-                painter->drawText(indicatorRect, Qt::AlignVCenter | Qt::AlignRight, vopt->state.testFlag(QStyle::State_Open) ? QChar(ElaIconType::AngleDown) : QChar(ElaIconType::AngleRight));
+                painter->drawText(indicatorRect, Qt::AlignVCenter | Qt::AlignRight, vopt->state.testFlag(QStyle::State_Open) ? QChar(static_cast<char16_t>(ElaIconType::AngleDown)) : QChar(static_cast<char16_t>(ElaIconType::AngleRight)));
                 painter->restore();
             }
         }
@@ -193,7 +193,7 @@ void ElaTreeViewStyle::drawControl(ControlElement element, const QStyleOption* o
                     iconFont.setPixelSize(checkRect.width() * 0.85);
                     painter->setFont(iconFont);
                     painter->setPen(ElaThemeColor(ElaThemeType::Dark, BasicText));
-                    painter->drawText(checkRect, Qt::AlignCenter, QChar(ElaIconType::Check));
+                    painter->drawText(checkRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::Check)));
                 }
                 else if (vopt->checkState == Qt::PartiallyChecked)
                 {

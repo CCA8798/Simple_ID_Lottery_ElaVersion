@@ -1,5 +1,9 @@
 # Simple ID Lottery — Agent Guide
 
+## 语言
+
+所有对话、思考和输出必须使用中文。代码、标识符、文件和工具参数保持英文原样。
+
 ## Build
 
 ```
@@ -24,6 +28,10 @@ Qt 6.7.0 path is hardcoded in `CMakeLists.txt:5` — requires MinGW or MSVC with
 - Promote an Ela widget in Designer: add `customwidgets` section with `<header location="global">ElaXxx.h</header>`.
 - **Data models** must be heap-allocated (`new QStringListModel(...)`) — stack-allocated models become dangling after constructor exits.
 - `ElaListView` needs `setModel()` and typically `setIsTransparent(false)`.
+
+## Proxy
+
+- Port `7897` is available as an HTTP/SOCKS5 proxy for accessing GitHub, fetching packages, or any internet resource behind the firewall. Set `http_proxy=http://127.0.0.1:7897` or `HTTPS_PROXY=http://127.0.0.1:7897` as needed.
 
 ## Non-obvious
 

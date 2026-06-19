@@ -283,7 +283,7 @@ bool ElaMessageBarPrivate::_judgeCreateOrder(ElaMessageBar* otherMessageBar)
 {
     if (otherMessageBar->d_ptr->_createTime < _createTime)
     {
-        //otherMessageBar先创建
+        //otherMessageBar先创�?
         return true;
     }
     else
@@ -339,8 +339,8 @@ void ElaMessageBarPrivate::_drawSuccess(QPainter* painter)
     QFont iconFont = QFont("ElaAwesome");
     iconFont.setPixelSize(12);
     painter->setFont(iconFont);
-    painter->drawText(_leftPadding, 0, q->width(), q->height(), Qt::AlignVCenter, QChar(ElaIconType::Check));
-    // 时间进度条绘制
+    painter->drawText(_leftPadding, 0, q->width(), q->height(), Qt::AlignVCenter, QChar(static_cast<char16_t>(ElaIconType::Check)));
+    // 时间进度条绘�?
     QPainterPath clipPath;
     clipPath.addRoundedRect(foregroundRect, _borderRadius, _borderRadius);
     painter->setClipPath(clipPath);
@@ -367,7 +367,7 @@ void ElaMessageBarPrivate::_drawWarning(QPainter* painter)
     painter->setClipPath(textPath);
     painter->fillPath(textPath, QColor(0xF8, 0xE2, 0x23));
     painter->drawText(_leftPadding + 4, 0, q->width(), q->height(), Qt::AlignVCenter, "!");
-    // 时间进度条绘制
+    // 时间进度条绘�?
     QPainterPath clipPath;
     clipPath.addRoundedRect(foregroundRect, _borderRadius, _borderRadius);
     painter->setClipPath(clipPath);
@@ -393,7 +393,7 @@ void ElaMessageBarPrivate::_drawInformation(QPainter* painter)
     painter->setClipPath(textPath);
     painter->fillPath(textPath, QColor(0x00, 0x66, 0xB4));
     painter->drawText(_leftPadding + 4, 0, q->width(), q->height(), Qt::AlignVCenter, "i");
-    // 时间进度条绘制
+    // 时间进度条绘�?
     QPainterPath clipPath;
     clipPath.addRoundedRect(foregroundRect, _borderRadius, _borderRadius);
     painter->setClipPath(clipPath);
@@ -421,8 +421,8 @@ void ElaMessageBarPrivate::_drawError(QPainter* painter)
     QFont iconFont = QFont("ElaAwesome");
     iconFont.setPixelSize(13);
     painter->setFont(iconFont);
-    painter->drawText(_leftPadding + 1, 0, q->width(), q->height(), Qt::AlignVCenter, QChar(ElaIconType::Xmark));
-    // 时间进度条绘制
+    painter->drawText(_leftPadding + 1, 0, q->width(), q->height(), Qt::AlignVCenter, QChar(static_cast<char16_t>(ElaIconType::Xmark)));
+    // 时间进度条绘�?
     QPainterPath clipPath;
     clipPath.addRoundedRect(foregroundRect, _borderRadius, _borderRadius);
     painter->setClipPath(clipPath);

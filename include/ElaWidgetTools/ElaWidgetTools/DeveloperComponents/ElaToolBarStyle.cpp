@@ -63,7 +63,7 @@ void ElaToolBarStyle::drawPrimitive(PrimitiveElement element, const QStyleOption
     }
     case QStyle::PE_IndicatorToolBarSeparator:
     {
-        //间隔符绘制
+        //间隔符绘�?
         QRect separatorRect = option->rect;
         painter->save();
         painter->setRenderHint(QPainter::Antialiasing);
@@ -113,7 +113,7 @@ void ElaToolBarStyle::drawControl(ControlElement element, const QStyleOption* op
                 QFont iconFont = QFont("ElaAwesome");
                 iconFont.setPixelSize(18);
                 painter->setFont(iconFont);
-                painter->drawText(bopt->rect, Qt::AlignCenter, QChar(ElaIconType::AngleRight));
+                painter->drawText(bopt->rect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::AngleRight)));
             }
             else
             {
@@ -138,7 +138,7 @@ void ElaToolBarStyle::drawControl(ControlElement element, const QStyleOption* op
                         }
                     }
                 }
-                //指示器绘制
+                //指示器绘�?
                 _drawIndicator(painter, bopt, widget);
 
                 //图标绘制
@@ -208,7 +208,7 @@ void ElaToolBarStyle::_drawIndicator(QPainter* painter, const QStyleOptionToolBu
     if (bopt->features.testFlag(QStyleOptionToolButton::MenuButtonPopup))
     {
         QRect indicatorRect = subControlRect(QStyle::CC_ToolButton, bopt, QStyle::SC_ScrollBarSubLine, widget);
-        //指示器区域
+        //指示器区�?
         if (bopt->state.testFlag(QStyle::State_Enabled) && bopt->activeSubControls.testFlag(QStyle::SC_ScrollBarSubLine))
         {
             painter->setBrush(ElaThemeColor(_themeMode, BasicIndicator));
@@ -222,7 +222,7 @@ void ElaToolBarStyle::_drawIndicator(QPainter* painter, const QStyleOptionToolBu
             path.closeSubpath();
             painter->drawPath(path);
         }
-        //指示器
+        //指示�?
         painter->setBrush(bopt->state.testFlag(QStyle::State_Enabled) ? ElaThemeColor(_themeMode, BasicText) : ElaThemeColor(_themeMode, BasicTextDisable));
         QPainterPath indicatorPath;
         qreal indicatorHeight = qCos(30 * M_PI / 180.0) * indicatorRect.width() * 0.85;

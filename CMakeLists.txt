@@ -2,7 +2,9 @@
 
 project(Simple_ID_Lottery VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_PREFIX_PATH F:/Software/Qt/6.7.0/mingw_64/lib/cmake)
+#Modify Qt&Complier Install Path HERE
+set(CMAKE_INSTALL_PREFIX F:/Software/Qt/6.12.0/mingw_64/lib/cmake)
+set(CMAKE_PREFIX_PATH F:/Software/Qt/6.12.0/mingw_64)
 
 set (CMAKE_CXX_FLAGS_RELEASE "-Ofast")
 set (CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall")
@@ -14,7 +16,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
@@ -24,6 +26,26 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(ELAWIDGETTOOLS_BUILD_STATIC_LIB ON CACHE BOOL "Build static library." FORCE)
 add_subdirectory(include/ElaWidgetTools/ElaWidgetTools)
 
+# ElaWidgetTools 需要 Qt 私有头文件 (Qt 6.11+ versioned dirs)
+if(TARGET ElaWidgetTools)
+    get_target_property(_qt_widgets_incl Qt${QT_VERSION_MAJOR}::Widgets INTERFACE_INCLUDE_DIRECTORIES)
+    foreach(_d ${_qt_widgets_incl})
+        if(_d MATCHES "/QtWidgets$")
+            file(TO_CMAKE_PATH "${_d}" _d_cm)
+            get_filename_component(_qt_include_root "${_d_cm}" DIRECTORY)
+            # 添加所有 Qt 模块的 versioned 私有头文件目录
+            file(GLOB _qt_modules RELATIVE "${_qt_include_root}" "${_qt_include_root}/Qt*")
+            foreach(_mod ${_qt_modules})
+                set(_ver_dir "${_qt_include_root}/${_mod}/${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH}")
+                if(EXISTS "${_ver_dir}/${_mod}/private")
+                    target_include_directories(ElaWidgetTools PRIVATE "${_ver_dir}" "${_ver_dir}/${_mod}")
+                endif()
+            endforeach()
+            break()
+        endif()
+    endforeach()
+endif()
+
 set(PROJECT_SOURCES
     src/main.cpp
     src/mw_source.cpp
@@ -31,6 +53,9 @@ set(PROJECT_SOURCES
     src/mw_resource.qrc
     src/mw_ui.ui
     src/page_content.ui
+        src/pl_AddDialog_source.cpp
+        src/pl_AddDialog_header.hpp
+        src/pl_AddDialog_ui.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -53,6 +78,7 @@ endif()
 target_include_directories(Simple_ID_Lottery PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/include/plog/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_compile_definitions(Simple_ID_Lottery PRIVATE
@@ -72,7 +98,7 @@ set_target_properties(Simple_ID_Lottery PROPERTIES
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
+#    WIN32_EXECUTABLE TRUE
 )
 
 include(GNUInstallDirs)

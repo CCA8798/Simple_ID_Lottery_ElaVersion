@@ -93,7 +93,7 @@ void ElaDrawerHeader::mouseReleaseEvent(QMouseEvent* event)
     {
         _isPressed = false;
         _pIsExpand = !_pIsExpand;
-        //指示器动画
+        //指示器动�?
         doExpandOrCollapseAnimation();
         Q_EMIT drawerHeaderClicked(_pIsExpand);
     }
@@ -117,7 +117,7 @@ void ElaDrawerHeader::paintEvent(QPaintEvent* event)
                                                                                                : ElaThemeColor(_themeMode, BasicBaseAlpha));
     QRect foregroundRect(1, 1, width() - 2, _pIsExpand ? height() + _pBorderRadius : height() - 2);
     painter.drawRoundedRect(foregroundRect, _pBorderRadius, _pBorderRadius);
-    // 底边线绘制
+    // 底边线绘�?
     if (isUnderMouse)
     {
         painter.setPen(ElaThemeColor(_themeMode, BasicBorderDeep));
@@ -142,7 +142,7 @@ void ElaDrawerHeader::paintEvent(QPaintEvent* event)
     painter.translate(expandIconRect.x() + (qreal)expandIconRect.width() / 2 - 2, expandIconRect.y() + (qreal)expandIconRect.height() / 2);
     painter.rotate(_pExpandIconRotate);
     painter.translate(-expandIconRect.x() - (qreal)expandIconRect.width() / 2 + 2, -expandIconRect.y() - (qreal)expandIconRect.height() / 2);
-    painter.drawText(expandIconRect, Qt::AlignVCenter, QChar(ElaIconType::AngleDown));
+    painter.drawText(expandIconRect, Qt::AlignVCenter, QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
 
     painter.restore();
 }

@@ -92,7 +92,7 @@ void ElaComboBoxStyle::drawControl(ControlElement element, const QStyleOption* o
             {
                 if (option->state & QStyle::State_MouseOver)
                 {
-                    // 选中时覆盖
+                    // 选中时覆�?
                     painter->setBrush(ElaThemeColor(_themeMode, BasicSelectedHoverAlpha));
                     painter->drawPath(path);
                 }
@@ -111,7 +111,7 @@ void ElaComboBoxStyle::drawControl(ControlElement element, const QStyleOption* o
             {
                 if (option->state & QStyle::State_MouseOver)
                 {
-                    // 覆盖时颜色
+                    // 覆盖时颜�?
                     painter->setBrush(ElaThemeColor(_themeMode, BasicHoverAlpha));
                     painter->drawPath(path);
                 }
@@ -154,7 +154,7 @@ void ElaComboBoxStyle::drawComplexControl(ComplexControl control, const QStyleOp
             QRect comboBoxRect = copt->rect;
             comboBoxRect.adjust(_shadowBorderWidth, 1, -_shadowBorderWidth, -1);
             painter->drawRoundedRect(comboBoxRect, 3, 3);
-            // 底边线绘制
+            // 底边线绘�?
             painter->setPen(ElaThemeColor(_themeMode, BasicBaseLine));
             painter->drawLine(comboBoxRect.x() + 3, comboBoxRect.y() + comboBoxRect.height(), comboBoxRect.x() + comboBoxRect.width() - 3, comboBoxRect.y() + comboBoxRect.height());
 
@@ -165,7 +165,7 @@ void ElaComboBoxStyle::drawComplexControl(ComplexControl control, const QStyleOp
                 painter->setPen(isEnabled ? ElaThemeColor(_themeMode, BasicText) : ElaThemeColor(_themeMode, BasicTextDisable));
                 painter->drawText(textRect, Qt::AlignVCenter | Qt::AlignLeft, copt->currentText);
             }
-            //展开指示器绘制
+            //展开指示器绘�?
             painter->setPen(Qt::NoPen);
             painter->setBrush(ElaThemeColor(_themeMode, PrimaryNormal));
             painter->drawRoundedRect(QRectF(comboBoxRect.center().x() - _pExpandMarkWidth, comboBoxRect.y() + comboBoxRect.height() - 3, _pExpandMarkWidth * 2, 3), 2, 2);
@@ -180,7 +180,7 @@ void ElaComboBoxStyle::drawComplexControl(ComplexControl control, const QStyleOp
                 painter->translate(expandIconRect.x() + (qreal)expandIconRect.width() / 2, expandIconRect.y() + (qreal)expandIconRect.height() / 2);
                 painter->rotate(_pExpandIconRotate);
                 painter->translate(-expandIconRect.x() - (qreal)expandIconRect.width() / 2, -expandIconRect.y() - (qreal)expandIconRect.height() / 2);
-                painter->drawText(expandIconRect, Qt::AlignCenter, QChar(ElaIconType::AngleDown));
+                painter->drawText(expandIconRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
                 painter->restore();
             }
         }

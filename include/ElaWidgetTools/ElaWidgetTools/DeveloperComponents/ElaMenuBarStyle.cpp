@@ -55,7 +55,7 @@ void ElaMenuBarStyle::drawControl(ControlElement element, const QStyleOption* op
             QFont iconFont = QFont("ElaAwesome");
             iconFont.setPixelSize(18);
             painter->setFont(iconFont);
-            painter->drawText(topt->rect, Qt::AlignCenter, QChar(ElaIconType::AngleRight));
+            painter->drawText(topt->rect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::AngleRight)));
             painter->restore();
         }
         return;
@@ -90,7 +90,7 @@ void ElaMenuBarStyle::drawControl(ControlElement element, const QStyleOption* op
                 }
                 painter->drawRoundedRect(menuItemRect, 3, 3);
             }
-            //图标和文字绘制
+            //图标和文字绘�?
             QIcon icon = mopt->icon;
             QString menuText = mopt->text;
             QString iconText;

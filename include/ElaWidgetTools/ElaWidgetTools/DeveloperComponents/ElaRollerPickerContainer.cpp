@@ -132,7 +132,7 @@ void ElaRollerPickerContainer::paintEvent(QPaintEvent* event)
         painter.setBrush(ElaThemeColor(_themeMode, PopupBase));
         QRect foregroundRect(6, 6, rect().width() - 2 * 6, rect().height() - 2 * 6);
         painter.drawRoundedRect(foregroundRect, 8, 8);
-        // 纵向分割线
+        // 纵向分割�?
         painter.setPen(ElaThemeColor(_themeMode, BasicBorder));
         int rollerXOffset = 8;
         for (int i = 0; i < _rollerList.count(); i++)
@@ -144,7 +144,7 @@ void ElaRollerPickerContainer::paintEvent(QPaintEvent* event)
                 painter.drawLine(rollerXOffset, foregroundRect.y(), rollerXOffset, foregroundRect.bottom() - _pButtonAreaHeight);
             }
         }
-        // 横向分割线
+        // 横向分割�?
         painter.drawLine(foregroundRect.x(), foregroundRect.bottom() - _pButtonAreaHeight, foregroundRect.right(), foregroundRect.bottom() - _pButtonAreaHeight);
         // 按钮区域绘制
         _overButtonRect = QRect(foregroundRect.x() + _buttonMargin, foregroundRect.bottom() - _pButtonAreaHeight + _buttonMargin, (foregroundRect.width() - 2 * _buttonMargin - _buttonSpacing) / 2, _pButtonAreaHeight - 2 * _buttonMargin + 1);
@@ -165,9 +165,9 @@ void ElaRollerPickerContainer::paintEvent(QPaintEvent* event)
         painter.setFont(iconFont);
         painter.setPen(ElaThemeColor(_themeMode, BasicText));
         // 确定
-        painter.drawText(_overButtonRect, Qt::AlignCenter, QChar(ElaIconType::Check));
+        painter.drawText(_overButtonRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::Check)));
         // 取消
-        painter.drawText(_cancelButtonRect, Qt::AlignCenter, QChar(ElaIconType::Xmark));
+        painter.drawText(_cancelButtonRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::Xmark)));
     }
     painter.restore();
 }

@@ -101,14 +101,14 @@ void ElaNavigationStyle::drawPrimitive(PrimitiveElement element, const QStyleOpt
             {
                 if (index == _pPressIndex)
                 {
-                    // 选中时点击
+                    // 选中时点�?
                     painter->fillPath(path, ElaThemeColor(_themeMode, BasicHoverAlpha));
                 }
                 else
                 {
                     if (vopt->state & QStyle::State_MouseOver)
                     {
-                        // 选中时覆盖
+                        // 选中时覆�?
                         painter->fillPath(path, ElaThemeColor(_themeMode, BasicSelectedHoverAlpha));
                     }
                     else
@@ -122,14 +122,14 @@ void ElaNavigationStyle::drawPrimitive(PrimitiveElement element, const QStyleOpt
             {
                 if (index == _pPressIndex)
                 {
-                    // 点击时颜色
+                    // 点击时颜�?
                     painter->fillPath(path, ElaThemeColor(_themeMode, BasicPressAlpha));
                 }
                 else
                 {
                     if (vopt->state & QStyle::State_MouseOver)
                     {
-                        // 覆盖时颜色
+                        // 覆盖时颜�?
                         painter->fillPath(path, ElaThemeColor(_themeMode, BasicHoverAlpha));
                     }
                 }
@@ -140,12 +140,12 @@ void ElaNavigationStyle::drawPrimitive(PrimitiveElement element, const QStyleOpt
     }
     case QStyle::PE_PanelItemViewRow:
     {
-        // 行背景
+        // 行背�?
         return;
     }
     case QStyle::PE_IndicatorBranch:
     {
-        // Branch指示器
+        // Branch指示�?
         return;
     }
     default:
@@ -206,7 +206,7 @@ void ElaNavigationStyle::drawControl(ControlElement element, const QStyleOption*
                 QFont iconFont = QFont("ElaAwesome");
                 iconFont.setPixelSize(17);
                 painter->setFont(iconFont);
-                painter->drawText(QRect(itemRect.x(), itemRect.y(), _iconAreaWidth, itemRect.height()), Qt::AlignCenter, QChar(node->getAwesome()));
+                painter->drawText(QRect(itemRect.x(), itemRect.y(), _iconAreaWidth, itemRect.height()), Qt::AlignCenter, QChar(static_cast<char16_t>(node->getAwesome())));
                 painter->restore();
             }
 
@@ -266,7 +266,7 @@ void ElaNavigationStyle::drawControl(ControlElement element, const QStyleOption*
                             }
                         }
                         painter->translate(-expandIconRect.x() - (qreal)expandIconRect.width() / 2 + 1, -expandIconRect.y() - (qreal)expandIconRect.height() / 2);
-                        painter->drawText(expandIconRect, Qt::AlignVCenter, QChar(ElaIconType::AngleDown));
+                        painter->drawText(expandIconRect, Qt::AlignVCenter, QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
                         painter->restore();
                     }
                     if (node->getIsChildHasKeyPoints())
@@ -451,7 +451,7 @@ bool ElaNavigationStyle::_compareItemY(ElaNavigationNode* node1, ElaNavigationNo
     {
         return true;
     }
-    // 同一父节点
+    // 同一父节�?
     if (node1->getParentNode() == node2->getParentNode())
     {
         if (node1->getModelIndex().row() < node2->getModelIndex().row())
@@ -467,7 +467,7 @@ bool ElaNavigationStyle::_compareItemY(ElaNavigationNode* node1, ElaNavigationNo
     {
         ElaNavigationNode* node1OriginalNode = node1->getOriginalNode();
         ElaNavigationNode* node2OriginalNode = node2->getOriginalNode();
-        // 不同父节点  相同起源节点
+        // 不同父节�? 相同起源节点
         if (node1OriginalNode == node2OriginalNode)
         {
             int node1Depth = node1->getDepth();

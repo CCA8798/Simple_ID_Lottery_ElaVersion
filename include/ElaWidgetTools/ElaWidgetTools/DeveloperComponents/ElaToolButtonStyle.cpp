@@ -73,7 +73,7 @@ void ElaToolButtonStyle::drawComplexControl(ComplexControl control, const QStyle
                             {
                                 painter->setBrush(ElaThemeColor(_themeMode, BasicBase));
                                 painter->drawRoundedRect(toolButtonRect, _pBorderRadius, _pBorderRadius);
-                                // 底边线绘制
+                                // 底边线绘�?
                                 painter->setPen(ElaThemeColor(_themeMode, BasicBaseLine));
                                 painter->drawLine(toolButtonRect.x() + _pBorderRadius, toolButtonRect.y() + toolButtonRect.height(), toolButtonRect.x() + toolButtonRect.width() - _pBorderRadius, toolButtonRect.y() + toolButtonRect.height());
                             }
@@ -89,7 +89,7 @@ void ElaToolButtonStyle::drawComplexControl(ComplexControl control, const QStyle
                     painter->drawRoundedRect(toolButtonRect, _pBorderRadius, _pBorderRadius);
                 }
             }
-            // 指示器绘制
+            // 指示器绘�?
             _drawIndicator(painter, bopt, widget);
 
             // 图标绘制
@@ -134,7 +134,7 @@ void ElaToolButtonStyle::_drawIndicator(QPainter* painter, const QStyleOptionToo
     if (bopt->features.testFlag(QStyleOptionToolButton::MenuButtonPopup))
     {
         QRect indicatorRect = subControlRect(QStyle::CC_ToolButton, bopt, QStyle::SC_ScrollBarSubLine, widget);
-        // 指示器区域
+        // 指示器区�?
         if (bopt->state.testFlag(QStyle::State_Enabled) && bopt->activeSubControls.testFlag(QStyle::SC_ScrollBarSubLine))
         {
             painter->setBrush(ElaThemeColor(_themeMode, BasicIndicator));
@@ -148,7 +148,7 @@ void ElaToolButtonStyle::_drawIndicator(QPainter* painter, const QStyleOptionToo
             path.closeSubpath();
             painter->drawPath(path);
         }
-        // 指示器
+        // 指示�?
         painter->setBrush(bopt->state.testFlag(QStyle::State_Enabled) ? ElaThemeColor(_themeMode, BasicText) : ElaThemeColor(_themeMode, BasicTextDisable));
         QPainterPath indicatorPath;
         qreal indicatorHeight = qCos(30 * M_PI / 180.0) * indicatorRect.width() * 0.85;
@@ -160,20 +160,20 @@ void ElaToolButtonStyle::_drawIndicator(QPainter* painter, const QStyleOptionToo
     }
     else if (bopt->features.testFlag(QStyleOptionToolButton::HasMenu))
     {
-        // 展开指示器
+        // 展开指示�?
         QSize iconSize = bopt->iconSize;
         painter->save();
         QRect toolButtonRect = bopt->rect;
         QFont iconFont = QFont("ElaAwesome");
         iconFont.setPixelSize(0.75 * std::min(iconSize.width(), iconSize.height()));
         painter->setFont(iconFont);
-        int indicatorWidth = painter->fontMetrics().horizontalAdvance(QChar(ElaIconType::AngleDown));
+        int indicatorWidth = painter->fontMetrics().horizontalAdvance(QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
         QRect expandIconRect(toolButtonRect.right() - _contentMargin - indicatorWidth, toolButtonRect.y() + 1, indicatorWidth, toolButtonRect.height());
         painter->setPen(ElaThemeColor(_themeMode, BasicText));
         painter->translate(expandIconRect.center().x(), expandIconRect.y() + (qreal)expandIconRect.height() / 2);
         painter->rotate(_pExpandIconRotate);
         painter->translate(-expandIconRect.center().x() - 1, -expandIconRect.y() - (qreal)expandIconRect.height() / 2);
-        painter->drawText(expandIconRect, Qt::AlignCenter, QChar(ElaIconType::AngleDown));
+        painter->drawText(expandIconRect, Qt::AlignCenter, QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
         painter->restore();
     }
 }
@@ -347,13 +347,13 @@ void ElaToolButtonStyle::_drawText(QPainter* painter, QRect contentRect, const Q
 
 qreal ElaToolButtonStyle::_calculateExpandIndicatorWidth(const QStyleOptionToolButton* bopt, QPainter* painter) const
 {
-    // 展开指示器
+    // 展开指示�?
     QSize iconSize = bopt->iconSize;
     painter->save();
     QFont iconFont = QFont("ElaAwesome");
     iconFont.setPixelSize(0.75 * std::min(iconSize.width(), iconSize.height()));
     painter->setFont(iconFont);
-    int indicatorWidth = painter->fontMetrics().horizontalAdvance(QChar(ElaIconType::AngleDown));
+    int indicatorWidth = painter->fontMetrics().horizontalAdvance(QChar(static_cast<char16_t>(ElaIconType::AngleDown)));
     painter->restore();
     return indicatorWidth;
 }

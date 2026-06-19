@@ -79,7 +79,7 @@ void ElaToolButton::setMenu(ElaMenu* menu)
 
 void ElaToolButton::setElaIcon(ElaIconType::IconName icon)
 {
-    setProperty("ElaIconType", QChar(icon));
+    setProperty("ElaIconType", QChar(static_cast<char16_t>(icon)));
     setIcon(ElaIcon::getInstance()->getElaIcon(ElaIconType::Broom, 1));
 }
 
@@ -98,7 +98,7 @@ bool ElaToolButton::eventFilter(QObject* watched, QEvent* event)
         {
         case QEvent::Show:
         {
-            //指示器动画
+            //指示器动�?
             QPropertyAnimation* rotateAnimation = new QPropertyAnimation(d->_toolButtonStyle, "pExpandIconRotate");
             connect(rotateAnimation, &QPropertyAnimation::valueChanged, this, [=](const QVariant& value) {
                 update();
@@ -112,7 +112,7 @@ bool ElaToolButton::eventFilter(QObject* watched, QEvent* event)
         }
         case QEvent::Hide:
         {
-            //指示器动画
+            //指示器动�?
             QPropertyAnimation* rotateAnimation = new QPropertyAnimation(d->_toolButtonStyle, "pExpandIconRotate");
             connect(rotateAnimation, &QPropertyAnimation::valueChanged, this, [=](const QVariant& value) {
                 update();
