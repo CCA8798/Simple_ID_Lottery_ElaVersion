@@ -14,7 +14,7 @@
 
 ## 构建
 
-依赖：Qt 6.12+ MinGW、CMake ≥ 3.12、Ninja
+依赖：Qt 6.7+ MinGW、CMake ≥ 3.12、Ninja、C++20
 
 ```bash
 cmake --preset default
