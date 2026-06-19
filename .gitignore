@@ -24,6 +24,7 @@ qrc_*.cpp
 *~
 
 # Docs
+AGENTS.md
 ELA_WIDGET_API.md
 
 # OS
